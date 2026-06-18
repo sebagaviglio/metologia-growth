@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metodología Growth Digital · Bancor 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde:#005f5a;
+    --verde-osc:#00221d;
+    --verde-prof:#003c37;
+    --naranja:#ee622b;
+    --naranja-claro:#ff8d5c;
+    --crema:#e5efee;
+    --blanco:#ffffff;
+    --verde-acento:#bbe813;
+    --texto-suave:#cfe3e1;
+    --max:1180px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Public Sans', sans-serif;
+    background:var(--verde-osc);
+    color:var(--blanco);
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--naranja);color:var(--blanco);}
+
+  /* ---------- progreso lateral ---------- */
+  .progreso{
+    position:fixed;
+    top:0; left:0;
+    height:3px;
+    background:linear-gradient(90deg,var(--naranja),var(--verde-acento));
+    z-index:999;
+    width:0%;
+    transition:width .1s linear;
+  }
+
+  .nav-dots{
+    position:fixed;
+    right:28px;
+    top:50%;
+    transform:translateY(-50%);
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    z-index:500;
+  }
+  .nav-dots a{
+    width:8px;height:8px;border-radius:50%;
+    background:rgba(255,255,255,.25);
+    display:block;
+    transition:all .25s ease;
+  }
+  .nav-dots a.activo{
+    background:var(--naranja);
+    height:26px;
+    border-radius:6px;
+  }
+  @media (max-width:860px){ .nav-dots{display:none;} }
+
+  section{
+    min-height:100vh;
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    padding:90px 7vw;
+  }
+  .wrap{max-width:var(--max); width:100%; margin:0 auto; position:relative; z-index:2;}
+
+  .eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    font-size:.72rem;
+    font-weight:700;
+    color:var(--naranja-claro);
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:22px;height:2px;
+    background:var(--naranja);
+    display:inline-block;
+  }
+
+  h1,h2,h3{font-weight:800; letter-spacing:-.01em;}
+
+  /* ---------- PORTADA ---------- */
+  #s0{
+    background:radial-gradient(circle at 18% 22%, rgba(238,98,43,.18), transparent 45%),
+               radial-gradient(circle at 85% 80%, rgba(187,232,19,.10), transparent 50%),
+               var(--verde-osc);
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content:center;
+  }
+  .logo-bancor{
+    display:flex;align-items:center;gap:10px;
+    margin-bottom:60px;
+  }
+  .logo-bancor svg{height:26px;}
+  .logo-bancor span{
+    font-size:.78rem; letter-spacing:.05em; color:var(--texto-suave); font-weight:500;
+    border-left:1px solid rgba(255,255,255,.25); padding-left:10px;
+  }
+  #s0 h1{
+    font-size:clamp(3rem,8vw,6.4rem);
+    line-height:.98;
+  }
+  #s0 .linea1{color:var(--blanco); display:block;}
+  #s0 .linea2{
+    display:block;
+    background:linear-gradient(95deg,var(--naranja) 10%, var(--naranja-claro) 90%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  #s0 .sub{
+    margin-top:32px;
+    max-width:640px;
+    font-size:1.15rem;
+    color:var(--texto-suave);
+    font-weight:300;
+    line-height:1.55;
+  }
+  .anio-tag{
+    position:absolute; bottom:48px; right:7vw;
+    font-size:.85rem; color:rgba(255,255,255,.4); letter-spacing:.1em;
+  }
+  .scroll-cue{
+    position:absolute; bottom:48px; left:7vw;
+    display:flex; align-items:center; gap:10px;
+    font-size:.78rem; color:rgba(255,255,255,.45); letter-spacing:.08em;
+  }
+  .scroll-cue .barra{
+    width:1px;height:34px;background:rgba(255,255,255,.3);
+    position:relative; overflow:hidden;
+  }
+  .scroll-cue .barra::after{
+    content:''; position:absolute; top:0; left:0; width:100%; height:40%;
+    background:var(--naranja);
+    animation:bajar 1.8s infinite ease-in-out;
+  }
+  @keyframes bajar{0%{top:-40%;}100%{top:100%;}}
+
+  /* ---------- EQUIPO ---------- */
+  #s1{background:var(--verde-osc);}
+  #s1 h2{font-size:clamp(2.1rem,4vw,3.2rem); margin-bottom:8px;}
+  #s1 .sub-h{color:var(--texto-suave); font-size:1.05rem; font-weight:300; margin-bottom:54px;}
+  .squads{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+  }
+  @media (max-width:980px){.squads{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.squads{grid-template-columns:1fr;}}
+  .squad-card{
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:16px;
+    padding:26px 22px;
+    transition:transform .25s ease, border-color .25s ease, background .25s ease;
+  }
+  .squad-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--naranja);
+    background:rgba(255,255,255,.06);
+  }
+  .squad-card .tag{
+    display:inline-block;
+    font-size:.68rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+    color:var(--naranja-claro);
+    margin-bottom:14px;
+  }
+  .squad-card h3{font-size:1.3rem; margin-bottom:18px; color:var(--blanco);}
+  .squad-card .rol{
+    display:flex; justify-content:space-between; gap:8px;
+    font-size:.82rem;
+    padding:7px 0;
+    border-top:1px solid rgba(255,255,255,.07);
+    color:var(--texto-suave);
+  }
+  .squad-card .rol:first-of-type{border-top:none;}
+  .squad-card .rol b{
+    color:var(--blanco); font-weight:500; text-align:right;
+  }
+  .rol .vac{color:rgba(255,255,255,.35); font-style:italic;}
+
+  /* ---------- PUNTO DE PARTIDA ---------- */
+  #s2{
+    background:linear-gradient(160deg, var(--verde-prof), var(--verde-osc) 70%);
+  }
+  .stat-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:70px;
+    align-items:center;
+  }
+  @media (max-width:880px){.stat-grid{grid-template-columns:1fr; gap:40px;}}
+  .stat-grande{
+    font-size:clamp(5rem,14vw,9.5rem);
+    font-weight:900;
+    line-height:.85;
+    color:var(--naranja);
+  }
+  .stat-grande small{
+    display:block; font-size:1.3rem; font-weight:500; color:var(--texto-suave); margin-top:14px; letter-spacing:.01em;
+  }
+  #s2 h2{font-size:clamp(2rem,3.6vw,2.9rem); line-height:1.18; margin-bottom:26px;}
+  #s2 .reto-list{display:flex; flex-direction:column; gap:16px; margin-top:30px;}
+  #s2 .reto-item{
+    display:flex; gap:14px; align-items:flex-start;
+    font-size:.96rem; color:var(--texto-suave); font-weight:300; line-height:1.5;
+  }
+  #s2 .reto-item .num{
+    color:var(--naranja-claro); font-weight:800; font-size:.85rem; min-width:22px;
+  }
+  #s2 .cierre-reto{
+    margin-top:34px; padding-top:24px; border-top:1px solid rgba(255,255,255,.12);
+    font-size:1.1rem; font-weight:600; color:var(--blanco);
+  }
+  #s2 .cierre-reto span{color:var(--naranja-claro);}
+
+  /* ---------- PRINCIPIO CENTRAL ---------- */
+  #s3{
+    background:var(--verde-osc);
+    flex-direction:column;
+    text-align:center;
+  }
+  #s3 .eyebrow{justify-content:center;}
+  #s3 .eyebrow::before{display:none;}
+  #s3 h2{
+    font-size:clamp(2.6rem,7vw,5.2rem);
+    line-height:1.05;
+    max-width:920px;
+  }
+  #s3 h2 .tachado{
+    color:rgba(255,255,255,.28);
+    font-weight:500;
+    position:relative;
+  }
+  #s3 h2 .destacado{
+    color:var(--blanco);
+    background:linear-gradient(95deg,var(--naranja),var(--naranja-claro));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  #s3 .desc{
+    max-width:680px; margin:34px auto 0;
+    font-size:1.08rem; color:var(--texto-suave); font-weight:300; line-height:1.65;
+  }
+  .ciclo{
+    margin-top:64px;
+    display:flex; align-items:center; gap:0; flex-wrap:wrap; justify-content:center;
+  }
+  .ciclo .paso{
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    padding:0 22px;
+  }
+  .ciclo .paso .circ{
+    width:54px;height:54px;border-radius:50%;
+    background:rgba(255,255,255,.05);
+    border:1.5px solid rgba(255,255,255,.18);
+    display:flex;align-items:center;justify-content:center;
+    font-size:.78rem; font-weight:700; letter-spacing:.02em;
+    color:var(--texto-suave);
+    transition:.25s;
+  }
+  .ciclo .paso:nth-child(odd) .circ{border-color:var(--naranja); color:var(--naranja-claro);}
+  .ciclo .paso span{font-size:.78rem; color:rgba(255,255,255,.55); font-weight:500;}
+  .ciclo .flecha{color:rgba(255,255,255,.25); font-size:1.3rem; padding:0 4px;}
+  @media (max-width:760px){.ciclo .flecha{display:none;} .ciclo{gap:24px;}}
+
+  /* ---------- 6 PASOS ---------- */
+  /* ---------- MINDSET: CAMPAÑA VS EXPERIMENTO ---------- */
+  #s3b{background:var(--verde-osc);}
+  #s3b .head-mindset{text-align:center; margin-bottom:54px;}
+  #s3b .head-mindset h2{font-size:clamp(1.9rem,3.8vw,2.7rem); max-width:760px; margin:0 auto 14px; line-height:1.25;}
+  #s3b .head-mindset p{color:var(--texto-suave); font-weight:300; max-width:600px; margin:0 auto; font-size:1rem; line-height:1.6;}
+  .mindset-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  @media (max-width:880px){.mindset-grid{grid-template-columns:1fr;}}
+  .mindset-col{border-radius:24px; padding:32px 30px 36px; border:1px solid rgba(255,255,255,.12);}
+  .mindset-col.camp{background:rgba(255,255,255,.03);}
+  .mindset-col.exp{background:rgba(238,98,43,.06); border-color:rgba(238,98,43,.3);}
+  .mindset-tag{display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:6px 14px; border-radius:100px; margin-bottom:18px;}
+  .camp .mindset-tag{background:rgba(255,255,255,.08); color:var(--texto-suave);}
+  .exp .mindset-tag{background:var(--naranja); color:var(--verde-osc);}
+  .mindset-col h3{font-size:1.5rem; margin-bottom:8px;}
+  .camp h3{color:var(--blanco);}
+  .exp h3{color:var(--naranja-claro);}
+  .mindset-col .mindset-desc{font-size:.92rem; color:var(--texto-suave); font-weight:300; line-height:1.55; margin-bottom:26px;}
+  .mindset-card{background:rgba(255,255,255,.035); border:1px solid rgba(255,255,255,.1); border-radius:16px; padding:18px 20px; display:flex; gap:14px; align-items:flex-start; margin-bottom:14px;}
+  .exp .mindset-card{background:rgba(255,255,255,.05); border-color:rgba(238,98,43,.22);}
+  .mindset-card:last-child{margin-bottom:0;}
+  .mindset-card .mc-num{font-size:.78rem; font-weight:800; min-width:24px; padding-top:2px;}
+  .camp .mc-num{color:var(--blanco);}
+  .exp .mc-num{color:var(--naranja-claro);}
+  .mindset-card .mc-q{font-size:.98rem; font-weight:700; color:var(--blanco); margin-bottom:5px; line-height:1.4;}
+  .mindset-card .mc-a{font-size:.86rem; color:var(--texto-suave); font-weight:300; line-height:1.5;}
+  .mindset-nota{margin-top:36px; text-align:center; padding:24px 30px; border-radius:16px; background:rgba(238,98,43,.1); border:1px solid rgba(238,98,43,.3); font-size:1.02rem; font-weight:500; color:var(--blanco); max-width:760px; margin-inline:auto; line-height:1.55;}
+  .mindset-nota span{color:var(--naranja-claro); font-weight:700;}
+
+  #s4{background:linear-gradient(160deg, var(--verde-osc), var(--verde-prof) 80%);}
+  #s4 .head-flex{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:50px; gap:30px; flex-wrap:wrap;}
+  #s4 h2{font-size:clamp(2.1rem,4vw,3rem); line-height:1.12;}
+  #s4 .head-flex p{max-width:380px; color:var(--texto-suave); font-weight:300; font-size:.98rem;}
+  .pasos-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:16px;
+  }
+  @media (max-width:920px){.pasos-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:600px){.pasos-grid{grid-template-columns:1fr;}}
+  .paso-card{
+    background:rgba(255,255,255,.04);
+    border-radius:18px;
+    padding:30px 26px;
+    border:1px solid rgba(255,255,255,.08);
+    position:relative;
+    overflow:hidden;
+    transition:.3s;
+  }
+  .paso-card:hover{background:rgba(255,255,255,.07); transform:translateY(-4px);}
+  .paso-card .pn{
+    font-size:2.6rem; font-weight:900; color:rgba(255,255,255,.1);
+    position:absolute; top:14px; right:18px; line-height:1;
+  }
+  .paso-card h4{font-size:1.12rem; color:var(--blanco); margin-bottom:10px; position:relative; z-index:2;}
+  .paso-card p{font-size:.88rem; color:var(--texto-suave); font-weight:300; line-height:1.5; position:relative; z-index:2;}
+  .paso-card.acento{border-color:var(--naranja);}
+  .paso-card.acento h4{color:var(--naranja-claro);}
+
+  /* ---------- CUSTOMER INSIGHTS ---------- */
+  #s5{background:var(--verde-osc);}
+  .herr-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:60px; align-items:center;}
+  @media (max-width:900px){.herr-grid{grid-template-columns:1fr; gap:40px;}}
+  .herr-badge{
+    display:inline-flex; align-items:center; gap:12px;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:100px;
+    padding:8px 18px 8px 8px;
+    margin-bottom:28px;
+  }
+  .herr-badge .dot{width:34px;height:34px;border-radius:50%; background:linear-gradient(135deg,#2563eb,#60a5fa); flex-shrink:0;}
+  .herr-badge span{font-size:.85rem; font-weight:600;}
+  #s5 h2{font-size:clamp(2.4rem,5vw,3.8rem); line-height:1.05; margin-bottom:18px;}
+  #s5 .lead{font-size:1.05rem; color:var(--texto-suave); font-weight:300; line-height:1.6; font-style:italic; max-width:380px;}
+  .feature-list{display:flex; flex-direction:column; gap:0;}
+  .feature-item{
+    padding:22px 0;
+    border-bottom:1px solid rgba(255,255,255,.09);
+  }
+  .feature-item:first-child{padding-top:0;}
+  .feature-item h4{font-size:1.12rem; margin-bottom:8px; color:var(--blanco); display:flex; align-items:center; gap:10px;}
+  .feature-item h4 i{
+    width:6px;height:6px;background:var(--naranja); border-radius:50%; display:inline-block;
+  }
+  .feature-item p{font-size:.92rem; color:var(--texto-suave); font-weight:300; line-height:1.55;}
+  .feature-item.base{
+    background:rgba(238,98,43,.07);
+    border:1px solid rgba(238,98,43,.25);
+    border-radius:14px; padding:20px 22px; margin-top:6px;
+  }
+  .feature-item.base h4 i{background:var(--naranja-claro);}
+
+  /* ---------- AMPLITUDE ---------- */
+  #s6{background:linear-gradient(160deg, var(--verde-prof), var(--verde-osc));}
+  #s6 .topbar{display:flex; justify-content:space-between; align-items:center; margin-bottom:50px; flex-wrap:wrap; gap:18px;}
+  #s6 h2{font-size:clamp(2.3rem,5vw,3.6rem);}
+  .pill{
+    font-size:.78rem; font-weight:700; padding:8px 16px; border-radius:100px;
+    background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.15);
+    display:flex; align-items:center; gap:8px;
+  }
+  .cap-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+  @media (max-width:760px){.cap-grid{grid-template-columns:1fr;}}
+  .cap-card{
+    background:rgba(255,255,255,.04);
+    border-left:3px solid var(--verde-acento);
+    border-radius:4px 14px 14px 4px;
+    padding:26px 28px;
+  }
+  .cap-card h4{font-size:1.18rem; margin-bottom:10px;}
+  .cap-card p{font-size:.92rem; color:var(--texto-suave); font-weight:300; line-height:1.6;}
+  .cap-card strong{color:var(--blanco); font-weight:600;}
+
+  /* ---------- ADOBE ---------- */
+  #s7{background:var(--verde-osc);}
+  #s7 .topbar{display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:14px; flex-wrap:wrap; gap:18px;}
+  #s7 h2{font-size:clamp(2.4rem,6vw,4.2rem); line-height:1.02;}
+  #s7 h2 .nar{color:var(--naranja);}
+  #s7 .lead{color:var(--texto-suave); font-weight:300; font-style:italic; margin:20px 0 50px; font-size:1.05rem;}
+  .flujo3{display:grid; grid-template-columns:repeat(3,1fr); gap:0; position:relative;}
+  @media (max-width:860px){.flujo3{grid-template-columns:1fr; gap:16px;}}
+  .flujo3 .fcard{
+    background:var(--verde-prof);
+    padding:34px 28px;
+    position:relative;
+  }
+  .flujo3 .fcard:not(:last-child){border-right:1px solid rgba(255,255,255,.1);}
+  @media (max-width:860px){.flujo3 .fcard{border-radius:14px;} .flujo3 .fcard:not(:last-child){border-right:none;}}
+  .flujo3 .fnum{
+    width:38px;height:38px;border-radius:50%;
+    background:var(--naranja); color:var(--verde-osc);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800; font-size:.95rem; margin-bottom:20px;
+  }
+  .flujo3 h4{font-size:1.1rem; margin-bottom:12px;}
+  .flujo3 p{font-size:.9rem; color:var(--texto-suave); font-weight:300; line-height:1.55;}
+
+  /* ---------- SISTEMA COMPLETO ---------- */
+  #s8{background:linear-gradient(180deg, var(--verde-prof), var(--verde-osc));}
+  #s8 h2{font-size:clamp(2.2rem,4.5vw,3.4rem); margin-bottom:10px;}
+  #s8 .sub-h{color:var(--texto-suave); font-weight:300; margin-bottom:60px; max-width:560px;}
+  .flow-row{
+    display:flex; align-items:stretch; gap:0; flex-wrap:wrap;
+    justify-content:center;
+  }
+  .flow-step{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:16px;
+    padding:24px 20px;
+    width:200px;
+    display:flex; flex-direction:column; gap:8px;
+  }
+  .flow-step .ico{font-size:.7rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--naranja-claro);}
+  .flow-step h4{font-size:1.05rem;}
+  .flow-step p{font-size:.82rem; color:var(--texto-suave); font-weight:300; line-height:1.45;}
+  .flow-arrow{
+    display:flex; align-items:center; justify-content:center;
+    color:var(--naranja); font-size:1.4rem; font-weight:300; padding:0 10px;
+  }
+  @media (max-width:920px){
+    .flow-row{flex-direction:column; align-items:center;}
+    .flow-arrow{transform:rotate(90deg); padding:6px 0;}
+    .flow-step{width:100%; max-width:320px;}
+  }
+  .loop-note{
+    margin-top:50px; text-align:center;
+    padding:22px 30px; border-radius:14px;
+    background:rgba(238,98,43,.08); border:1px solid rgba(238,98,43,.3);
+    font-size:.98rem; color:var(--blanco); font-weight:500; max-width:720px; margin-inline:auto;
+  }
+  .loop-note span{color:var(--naranja-claro); font-weight:700;}
+
+  /* ---------- FRAMEWORK ---------- */
+  #s9{background:var(--verde-osc);}
+  .fw-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media (max-width:860px){.fw-grid{grid-template-columns:1fr;}}
+  .fw-card{
+    padding:32px;
+    border-radius:18px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.09);
+  }
+  .fw-card h4{font-size:1.25rem; margin-bottom:12px; display:flex; align-items:center; gap:12px;}
+  .fw-card h4 .ic{
+    width:40px;height:40px;border-radius:10px;
+    background:rgba(238,98,43,.15); color:var(--naranja-claro);
+    display:flex;align-items:center;justify-content:center; font-weight:800; font-size:1rem;
+  }
+  .fw-card p{font-size:.93rem; color:var(--texto-suave); font-weight:300; line-height:1.6;}
+  #s9 .cierre-fw{
+    margin-top:36px; text-align:center; font-size:1.05rem; color:var(--texto-suave); font-weight:300;
+  }
+  #s9 .cierre-fw b{color:var(--blanco); font-weight:600;}
+
+  /* ---------- CIERRE ---------- */
+  #s10{
+    background:radial-gradient(circle at 30% 30%, rgba(238,98,43,.15), transparent 50%), var(--verde-osc);
+    text-align:center;
+    flex-direction:column;
+  }
+  #s10 .tag-bancor{font-size:.78rem; letter-spacing:.2em; color:var(--naranja-claro); font-weight:700; margin-bottom:30px;}
+  #s10 h2{
+    font-size:clamp(2.4rem,7vw,5rem);
+    line-height:1.12;
+    max-width:900px;
+  }
+  #s10 h2 .resaltado{
+    background:linear-gradient(95deg,var(--naranja),var(--verde-acento));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  #s10 .nota{
+    margin-top:36px; font-size:1.05rem; color:rgba(255,255,255,.4); font-weight:300;
+  }
+  #s10 .footer-yr{
+    margin-top:80px; font-size:.8rem; letter-spacing:.1em; color:rgba(255,255,255,.3);
+  }
+
+  /* utilitario reveal */
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.visible{opacity:1; transform:translateY(0);}
+
+  @media (max-width:600px){
+    section{padding:80px 6vw;}
+  }
+</style>
+</head>
+<body>
+
+<div class="progreso" id="progreso"></div>
+<div class="nav-dots" id="navDots"></div>
+
+<!-- 0 :: PORTADA -->
+<section id="s0">
+  <div class="wrap">
+    <div class="logo-bancor reveal">
+      <svg viewBox="0 0 110 28" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="21" font-family="Public Sans" font-weight="800" font-size="22" fill="#ffffff">BANCOR</text>
+        <path d="M85 4 Q95 4 95 14 L95 4 Z" fill="#ee622b"/>
+      </svg>
+      <span>Banca Digital</span>
+    </div>
+    <h1 class="reveal">
+      <span class="linea1">Metodología</span>
+      <span class="linea2">Growth Digital</span>
+    </h1>
+    <p class="sub reveal">Cómo los 4 squads de Banca Digital convierten datos en crecimiento, con un método común, medible y escalable.</p>
+  </div>
+  <div class="scroll-cue"><div class="barra"></div> SCROLL</div>
+  <div class="anio-tag">2026</div>
+</section>
+
+<!-- 1 :: EQUIPO -->
+<section id="s1">
+  <div class="wrap">
+    <div class="eyebrow reveal">El equipo</div>
+    <h2 class="reveal">4 squads, un mismo método</h2>
+    <p class="sub-h reveal">Cada squad combina producto, contenido, paid y datos para correr su propio ciclo de experimentación.</p>
+
+    <div class="squads">
+      <div class="squad-card reveal">
+        <span class="tag">Adquisición y Crosselling</span>
+        <h3>Captar y expandir</h3>
+        <div class="rol"><span>Product Owner</span><b>Ezequiel Marchese</b></div>
+        <div class="rol"><span>Own Media</span><b>Micaela Oviedo</b></div>
+        <div class="rol"><span>Paid Media</span><b>Ricardo Moll</b></div>
+        <div class="rol"><span>Content</span><b>Eugenia Zorrilla</b></div>
+        <div class="rol"><span>Data</span><b>Leandro Hayas</b></div>
+      </div>
+
+      <div class="squad-card reveal">
+        <span class="tag">Habitualidad</span>
+        <h3>Que vuelvan siempre</h3>
+        <div class="rol"><span>Product Owner</span><b>Daniel Pauletich</b></div>
+        <div class="rol"><span>Own Media</span><b>Agustín Rodríguez Ramallo</b></div>
+        <div class="rol"><span>Paid Media</span><b>Ricardo Moll</b></div>
+        <div class="rol"><span>Content</span><b>Belén Beccaria</b></div>
+        <div class="rol"><span>Data</span><b>José Jara · Matías López</b></div>
+      </div>
+
+      <div class="squad-card reveal">
+        <span class="tag">Bezza Hub</span>
+        <h3>La billetera cordobesa</h3>
+        <div class="rol"><span>Product Owner</span><b>Melisa Zozaya</b></div>
+        <div class="rol"><span>Own Media</span><b>Berenice Voges</b></div>
+        <div class="rol"><span>Paid Media</span><b>Ricardo Moll</b></div>
+        <div class="rol"><span>Content</span><b>L. Orieta · B. Herrera · A. Saber</b></div>
+        <div class="rol"><span>Data</span><b>Leandro Hayas</b></div>
+      </div>
+
+      <div class="squad-card reveal">
+        <span class="tag">Empresas</span>
+        <h3>En formación</h3>
+        <div class="rol"><span>Product Owner</span><b class="vac">A definir</b></div>
+        <div class="rol"><span>Own Media</span><b class="vac">A definir</b></div>
+        <div class="rol"><span>Content</span><b>Martín Molina</b></div>
+        <div class="rol"><span>Data</span><b>Marcos Servín</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 :: PUNTO DE PARTIDA -->
+<section id="s2">
+  <div class="wrap">
+    <div class="eyebrow reveal">El punto de partida</div>
+    <div class="stat-grid">
+      <div class="reveal">
+        <div class="stat-grande">4<small>squads ya corriendo objetivos mensuales por canal</small></div>
+      </div>
+      <div class="reveal">
+        <h2>Hoy cada squad aprende a su ritmo. La metodología los pone a aprender juntos.</h2>
+        <div class="reto-list">
+          <div class="reto-item"><span class="num">01</span> Cada squad construyó su propio know-how de canal, mes a mes.</div>
+          <div class="reto-item"><span class="num">02</span> Falta una vara común para comparar qué funciona y por qué.</div>
+          <div class="reto-item"><span class="num">03</span> Escalar una campaña ganadora todavía depende del esfuerzo manual de cada equipo.</div>
+        </div>
+        <div class="cierre-reto">La metodología conecta los tres puntos: <span>aprendizaje, medición y escala.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 :: PRINCIPIO CENTRAL -->
+<section id="s3">
+  <div class="wrap">
+    <div class="eyebrow">Principio central</div>
+    <h2><span class="destacado">Corremos experimentos.</span><br><span class="tachado">No lanzamos campañas.</span></h2>
+    <p class="desc">Un experimento tiene hipótesis, control y métrica de éxito desde el día uno. Eso es lo que cambia todo: lo que aprendemos, lo que escalamos y lo que decidimos abandonar a tiempo.</p>
+
+    <div class="ciclo reveal">
+      <div class="paso"><div class="circ">OBS</div><span>Observar</span></div>
+      <div class="flecha">→</div>
+      <div class="paso"><div class="circ">HIP</div><span>Hipótesis</span></div>
+      <div class="flecha">→</div>
+      <div class="paso"><div class="circ">TST</div><span>Test</span></div>
+      <div class="flecha">→</div>
+      <div class="paso"><div class="circ">APR</div><span>Aprender</span></div>
+      <div class="flecha">→</div>
+      <div class="paso"><div class="circ">ESC</div><span>Escalar</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3b :: MINDSET CAMPAÑA VS EXPERIMENTO -->
+<section id="s3b">
+  <div class="wrap">
+    <div class="head-mindset reveal">
+      <div class="eyebrow" style="justify-content:center;">Dos formas de pensar el mismo objetivo</div>
+      <h2>Growth es el mindset que suma una capa de tecnología y datos al objetivo de siempre.</h2>
+      <p>El objetivo es compartido, lo que cambia es cómo se piensa el camino.</p>
+    </div>
+
+    <div class="mindset-grid">
+      <div class="mindset-col camp reveal">
+        <span class="mindset-tag">Columna A</span>
+        <h3>Lente Campaña</h3>
+        <p class="mindset-desc">Cómo resolveríamos este objetivo con la lógica que ya conocemos.</p>
+
+        <div class="mindset-card">
+          <span class="mc-num">01</span>
+          <div><div class="mc-q">¿Qué mensaje creamos?</div><div class="mc-a">Una pieza, un concepto creativo, para comunicar el objetivo.</div></div>
+        </div>
+        <div class="mindset-card">
+          <span class="mc-num">02</span>
+          <div><div class="mc-q">¿A qué audiencia se lo mandamos?</div><div class="mc-a">Cómo definimos el público que va a recibir la comunicación.</div></div>
+        </div>
+        <div class="mindset-card">
+          <span class="mc-num">03</span>
+          <div><div class="mc-q">¿Por qué canales lo lanzamos?</div><div class="mc-a">Dónde y cómo distribuimos el mensaje.</div></div>
+        </div>
+        <div class="mindset-card">
+          <span class="mc-num">04</span>
+          <div><div class="mc-q">¿Cómo sabemos si funcionó?</div><div class="mc-a">Qué número miramos al cierre para decir que salió bien.</div></div>
+        </div>
+        <div class="mindset-card">
+          <span class="mc-num">05</span>
+          <div><div class="mc-q">¿Qué hacemos si funciona?</div><div class="mc-a">Cuál es el siguiente paso si el resultado es positivo.</div></div>
+        </div>
+      </div>
+
+      <div class="mindset-col exp reveal">
+        <span class="mindset-tag">Columna B</span>
+        <h3>Lente Experimento</h3>
+        <p class="mindset-desc">Cómo resolveríamos el mismo objetivo con la lógica de Growth.</p>
+
+        <div class="mindset-card">
+          <span class="mc-num">01</span>
+          <div><div class="mc-q">¿Qué hipótesis vamos a probar?</div><div class="mc-a">Qué creemos que va a pasar, y por qué creemos eso.</div></div>
+        </div>
+        <div class="mindset-card">
+          <span class="mc-num">02</span>
+          <div><div class="mc-q">¿Qué segmento y qué control usamos?</div><div class="mc-a">A quién testeamos primero, y contra qué grupo lo comparamos.</div></div>
+        </div>
+        <div class="mindset-card">
+          <span class="mc-num">03</span>
+          <div><div class="mc-q">¿Qué datos necesitamos para segmentar?</div><div class="mc-a">Qué información tiene que estar disponible antes de lanzar.</div></div>
+        </div>
+        <div class="mindset-card">
+          <span class="mc-num">04</span>
+          <div><div class="mc-q">¿Qué métrica define ganador, con qué rigor?</div><div class="mc-a">Cómo sabemos con certeza que una variante superó a otra.</div></div>
+        </div>
+        <div class="mindset-card">
+          <span class="mc-num">05</span>
+          <div><div class="mc-q">¿Cómo se automatiza y escala si gana?</div><div class="mc-a">Qué pasa después de validar, sin rehacer todo de cero.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mindset-nota reveal">La pregunta que importa al final: <span>¿qué necesitamos en datos, tecnología e IA para poder completar siempre la columna B?</span></div>
+  </div>
+</section>
+
+<!-- 4 :: 6 PASOS -->
+<section id="s4">
+  <div class="wrap">
+    <div class="head-flex">
+      <div class="reveal">
+        <div class="eyebrow">El proceso</div>
+        <h2>6 pasos para convertir datos en crecimiento</h2>
+      </div>
+      <p class="reveal">De la señal del cliente al journey que se escala solo, sin intervención manual.</p>
+    </div>
+
+    <div class="pasos-grid">
+      <div class="paso-card reveal"><span class="pn">01</span><h4>Observar</h4><p>Customer Insights unifica las señales de todos los canales en un mismo lugar.</p></div>
+      <div class="paso-card reveal"><span class="pn">02</span><h4>Segmentar</h4><p>Modelos predictivos identifican segmentos accionables, listos para activar.</p></div>
+      <div class="paso-card reveal"><span class="pn">03</span><h4>Formular hipótesis</h4><p>El squad define con precisión qué va a testear y cómo lo va a medir.</p></div>
+      <div class="paso-card acento reveal"><span class="pn">04</span><h4>Testear</h4><p>A/B test con Amplitude + contenido por segmento generado con Adobe.</p></div>
+      <div class="paso-card acento reveal"><span class="pn">05</span><h4>Aprender</h4><p>Amplitude consolida qué ganó, por qué ganó y en qué segmento.</p></div>
+      <div class="paso-card acento reveal"><span class="pn">06</span><h4>Automatizar y escalar</h4><p>Customer Journey orquesta el journey ganador de forma autónoma.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 :: CUSTOMER INSIGHTS -->
+<section id="s5">
+  <div class="wrap">
+    <div class="herr-grid">
+      <div class="reveal">
+        <div class="herr-badge"><div class="dot"></div><span>Customer Insights</span></div>
+        <h2>Datos unificados</h2>
+        <p class="lead">La base que hace posible personalizar y medir todo lo que viene después.</p>
+      </div>
+
+      <div class="feature-list reveal">
+        <div class="feature-item">
+          <h4><i></i>Vista 360° del cliente</h4>
+          <p>Consolida app, web, WhatsApp, sucursal y core bancario en un único perfil actualizado en tiempo real.</p>
+        </div>
+        <div class="feature-item">
+          <h4><i></i>Segmentación predictiva</h4>
+          <p>Modelos de propensión que identifican quién está listo para contratar un préstamo personal, quién tiene riesgo de churn y quién tiene potencial de inversión.</p>
+        </div>
+        <div class="feature-item">
+          <h4><i></i>Journeys automáticos</h4>
+          <p>Cuando un cliente alcanza un umbral del modelo, CI activa el journey correcto de forma automática.</p>
+        </div>
+        <div class="feature-item base">
+          <h4><i></i>La capa que activa a Adobe y Amplitude</h4>
+          <p>Customer Insights es la base de datos sobre la que Adobe personaliza y Amplitude mide. Todo el sistema arranca acá.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 :: AMPLITUDE -->
+<section id="s6">
+  <div class="wrap">
+    <div class="topbar reveal">
+      <h2>¿Ganó o perdió?</h2>
+      <div class="pill">⚡ Amplitude</div>
+    </div>
+
+    <div class="cap-grid reveal">
+      <div class="cap-card">
+        <h4>A/B testing</h4>
+        <p>Significancia estadística: sabemos con certeza si la variante A le ganó a B. <strong>Sprint de 2 semanas, resultado confiable.</strong></p>
+      </div>
+      <div class="cap-card">
+        <h4>Funnel analytics</h4>
+        <p>Identifica el paso exacto del onboarding, de la solicitud de préstamo o del alta de tarjeta donde se pierde la conversión.</p>
+      </div>
+      <div class="cap-card">
+        <h4>Feature flags</h4>
+        <p>Activa o desactiva una funcionalidad para un segmento puntual sin desplegar código nuevo. Ideal para experimentos rápidos.</p>
+      </div>
+      <div class="cap-card">
+        <h4>Cohortes</h4>
+        <p>Compara usuarios que convirtieron contra los que no, y descubre qué comportamiento predice la conversión 7 días antes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 :: ADOBE -->
+<section id="s7">
+  <div class="wrap">
+    <div class="topbar reveal">
+      <h2>Un mensaje.<br><span class="nar">Mil versiones.</span></h2>
+      <div class="pill">🎨 Adobe GenStudio</div>
+    </div>
+    <p class="lead">Contenido personalizado a escala, generado con IA dentro de los límites de marca.</p>
+
+    <div class="flujo3 reveal">
+      <div class="fcard">
+        <div class="fnum">1</div>
+        <h4>El segmento define el contenido</h4>
+        <p>Customer Insights le dice a Adobe quién es el receptor. Adobe genera la creatividad alineada a ese perfil, tono y producto.</p>
+      </div>
+      <div class="fcard">
+        <div class="fnum">2</div>
+        <h4>Guardrails de marca</h4>
+        <p>La IA genera siempre dentro de los lineamientos de identidad de Bancor: naranja, verde, concepto y tipografía consistentes.</p>
+      </div>
+      <div class="fcard">
+        <div class="fnum">3</div>
+        <h4>Insumo para el A/B test</h4>
+        <p>Amplitude toma las variantes que genera Adobe y las testea con rigor. El mejor contenido se escala.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 :: SISTEMA COMPLETO -->
+<section id="s8">
+  <div class="wrap">
+    <div class="eyebrow reveal">Cómo se conectan</div>
+    <h2 class="reveal">El sistema completo</h2>
+    <p class="sub-h reveal">Cada herramienta potencia a la siguiente. El valor está en la secuencia.</p>
+
+    <div class="flow-row reveal">
+      <div class="flow-step"><div class="ico">Datos</div><h4>Customer Insights</h4><p>Vista 360° y segmentos predictivos</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="ico">Contenido</div><h4>Adobe GenStudio</h4><p>Contenido por segmento con IA</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="ico">Medición</div><h4>Amplitude</h4><p>A/B test con rigor estadístico</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="ico">Resultado</div><h4>Aprendizaje</h4><p>Qué funciona y por qué</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><div class="ico">Escala</div><h4>CI Automation</h4><p>Journey autónomo escalado</p></div>
+    </div>
+
+    <div class="loop-note reveal">La automatización retroalimenta a Customer Insights: <span>cada iteración hace que el sistema entienda mejor al cliente.</span></div>
+  </div>
+</section>
+
+<!-- 9 :: FRAMEWORK -->
+<section id="s9">
+  <div class="wrap">
+    <div class="eyebrow reveal">El framework</div>
+    <h2 class="reveal" style="font-size:clamp(2.1rem,4vw,3rem); margin-bottom:40px;">Una metodología ágil que sostiene el ciclo</h2>
+
+    <div class="fw-grid">
+      <div class="fw-card reveal">
+        <h4><span class="ic">2S</span>Sprints de 2 semanas</h4>
+        <p>Cada sprint termina con un experimento lanzado o un aprendizaje documentado. La velocidad del sprint marca la velocidad de aprendizaje del portafolio.</p>
+      </div>
+      <div class="fw-card reveal">
+        <h4><span class="ic">⚙</span>Squads autónomos</h4>
+        <p>PO, data, content y paid en un solo equipo. Lanzan, miden y ajustan sin esperar aprobaciones cruzadas en cada acción.</p>
+      </div>
+      <div class="fw-card reveal">
+        <h4><span class="ic">H</span>Backlog de hipótesis</h4>
+        <p>Entra al sprint lo que tiene hipótesis definida, métrica de éxito clara y estimación de impacto.</p>
+      </div>
+      <div class="fw-card reveal">
+        <h4><span class="ic">↻</span>Retrospectiva</h4>
+        <p>Al cierre de cada sprint el squad revisa el proceso, no solo el resultado. El método mejora junto con los experimentos.</p>
+      </div>
+    </div>
+    <p class="cierre-fw reveal">El framework es lo que mantiene <b>vivo</b> el ciclo de observar, testear y escalar, sprint tras sprint.</p>
+  </div>
+</section>
+
+<!-- 10 :: CIERRE -->
+<section id="s10">
+  <div class="wrap">
+    <div class="tag-bancor reveal">BANCOR · BANCA DIGITAL · 2026</div>
+    <h2 class="reveal">La ventaja competitiva está en <span class="resaltado">la velocidad en la que el equipo aprende.</span></h2>
+    <p class="nota reveal">No en las herramientas.</p>
+    <div class="footer-yr">Metodología Growth Digital — 2026</div>
+  </div>
+</section>
+
+<script>
+  // ---- dots de navegación ----
+  const secciones = document.querySelectorAll('section');
+  const navDots = document.getElementById('navDots');
+  secciones.forEach((s,i)=>{
+    const a = document.createElement('a');
+    a.href = '#'+s.id;
+    navDots.appendChild(a);
+  });
+  const dots = navDots.querySelectorAll('a');
+
+  // ---- barra de progreso + dot activo ----
+  function onScroll(){
+    const scrollTop = window.scrollY;
+    const docH = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = docH>0 ? (scrollTop/docH)*100 : 0;
+    document.getElementById('progreso').style.width = pct+'%';
+
+    let activeIdx = 0;
+    secciones.forEach((s,i)=>{
+      const rect = s.getBoundingClientRect();
+      if(rect.top <= window.innerHeight*0.5 && rect.bottom >= window.innerHeight*0.5){
+        activeIdx = i;
+      }
+    });
+    dots.forEach((d,i)=>d.classList.toggle('activo', i===activeIdx));
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // ---- reveal on scroll ----
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, {threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
