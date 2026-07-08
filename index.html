@@ -474,6 +474,91 @@
   }
   #s9 .cierre-fw b{color:var(--blanco); font-weight:600;}
 
+  /* ---------- SCRUM: SECCIONES ---------- */
+  .scrum-section{background:var(--verde-osc);}
+  .scrum-section.alt{background:linear-gradient(160deg, var(--verde-prof), var(--verde-osc) 80%);}
+
+  /* intro scrum */
+  .scrum-intro-grid{display:grid; grid-template-columns:1fr 1.3fr; gap:70px; align-items:center;}
+  @media (max-width:880px){.scrum-intro-grid{grid-template-columns:1fr; gap:40px;}}
+  .scrum-big{font-size:clamp(4rem,11vw,7.5rem); font-weight:900; line-height:.85; color:var(--naranja); letter-spacing:-.02em;}
+  .scrum-big small{display:block; font-size:1.1rem; font-weight:500; color:var(--texto-suave); margin-top:14px; letter-spacing:.01em;}
+
+  /* pilares y valores: grid de tarjetas */
+  .pilares-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:50px;}
+  @media (max-width:860px){.pilares-grid{grid-template-columns:1fr;}}
+  .valores-grid{display:grid; grid-template-columns:repeat(5,1fr); gap:16px; margin-top:50px;}
+  @media (max-width:900px){.valores-grid{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:580px){.valores-grid{grid-template-columns:repeat(2,1fr);}}
+  .pilar-card{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09); border-radius:18px; padding:30px 26px;}
+  .pilar-card .pc-ico{width:46px;height:46px;border-radius:12px; background:rgba(238,98,43,.15); display:flex; align-items:center; justify-content:center; margin-bottom:18px; font-size:1.3rem;}
+  .pilar-card h4{font-size:1.18rem; margin-bottom:10px; color:var(--blanco);}
+  .pilar-card p{font-size:.9rem; color:var(--texto-suave); font-weight:300; line-height:1.55;}
+  .valor-card{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09); border-radius:16px; padding:24px 20px; text-align:center;}
+  .valor-card .vc-n{font-size:2rem; margin-bottom:10px;}
+  .valor-card h4{font-size:1.02rem; color:var(--naranja-claro); margin-bottom:8px;}
+  .valor-card p{font-size:.82rem; color:var(--texto-suave); font-weight:300; line-height:1.45;}
+
+  /* roles */
+  .roles-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:50px;}
+  @media (max-width:860px){.roles-grid{grid-template-columns:1fr;}}
+  .rol-card{border-radius:20px; padding:32px 28px; border:1px solid rgba(255,255,255,.1);}
+  .rol-card.r1{background:rgba(255,255,255,.03);}
+  .rol-card.r2{background:rgba(187,232,19,.05); border-color:rgba(187,232,19,.25);}
+  .rol-card.r3{background:rgba(238,98,43,.05); border-color:rgba(238,98,43,.2);}
+  .rol-card .rtag{display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; padding:5px 12px; border-radius:100px; margin-bottom:16px;}
+  .r1 .rtag{background:rgba(255,255,255,.08); color:var(--texto-suave);}
+  .r2 .rtag{background:rgba(187,232,19,.15); color:var(--verde-acento);}
+  .r3 .rtag{background:rgba(238,98,43,.15); color:var(--naranja-claro);}
+  .rol-card h4{font-size:1.3rem; margin-bottom:12px;}
+  .rol-card ul{list-style:none; display:flex; flex-direction:column; gap:9px;}
+  .rol-card ul li{font-size:.9rem; color:var(--texto-suave); font-weight:300; line-height:1.45; display:flex; gap:10px; align-items:flex-start;}
+  .rol-card ul li::before{content:'→'; color:var(--naranja-claro); flex-shrink:0; font-weight:700; font-size:.85rem; margin-top:1px;}
+
+  /* artefactos */
+  .artefactos-grid{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:50px;}
+  @media (max-width:800px){.artefactos-grid{grid-template-columns:1fr;}}
+  .arte-card{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09); border-radius:18px; padding:30px 28px;}
+  .arte-card h4{font-size:1.2rem; margin-bottom:10px; color:var(--naranja-claro);}
+  .arte-card p{font-size:.92rem; color:var(--texto-suave); font-weight:300; line-height:1.55;}
+
+  /* eventos overview */
+  .eventos-flow{display:flex; flex-direction:column; gap:14px; margin-top:50px;}
+  .evento-row{display:flex; gap:20px; align-items:center; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:20px 24px;}
+  .evento-row .ev-num{font-size:1.9rem; font-weight:900; color:var(--naranja); min-width:44px; line-height:1;}
+  .evento-row .ev-info h4{font-size:1.05rem; margin-bottom:5px;}
+  .evento-row .ev-info p{font-size:.88rem; color:var(--texto-suave); font-weight:300; line-height:1.45;}
+
+  /* eventos detalle */
+  .evento-detalle{display:grid; grid-template-columns:1fr 1.4fr; gap:60px; align-items:center;}
+  @media (max-width:880px){.evento-detalle{grid-template-columns:1fr; gap:36px;}}
+  .ev-stat{font-size:clamp(3.5rem,9vw,6rem); font-weight:900; color:var(--naranja); line-height:.9;}
+  .ev-stat small{display:block; font-size:1rem; font-weight:500; color:var(--texto-suave); margin-top:12px;}
+  .ev-bullets{display:flex; flex-direction:column; gap:14px; margin-top:26px;}
+  .ev-bullet{display:flex; gap:14px; align-items:flex-start; font-size:.96rem; color:var(--texto-suave); font-weight:300; line-height:1.5;}
+  .ev-bullet .bn{color:var(--naranja-claro); font-weight:800; font-size:.85rem; min-width:22px;}
+
+  /* daily: 3 preguntas */
+  .daily-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:50px;}
+  @media (max-width:800px){.daily-grid{grid-template-columns:1fr;}}
+  .daily-card{background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.09); border-radius:18px; padding:30px 26px; text-align:center;}
+  .daily-card .dnum{font-size:2.4rem; font-weight:900; color:var(--naranja); margin-bottom:14px; display:block;}
+  .daily-card h4{font-size:1.05rem; margin-bottom:10px;}
+  .daily-card p{font-size:.88rem; color:var(--texto-suave); font-weight:300; line-height:1.5;}
+
+  /* DoD */
+  .dod-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:50px;}
+  @media (max-width:800px){.dod-grid{grid-template-columns:1fr;}}
+  .dod-card{background:rgba(255,255,255,.04); border-left:3px solid var(--verde-acento); border-radius:4px 16px 16px 4px; padding:24px 22px;}
+  .dod-card h4{font-size:1rem; margin-bottom:8px; color:var(--blanco);}
+  .dod-card p{font-size:.86rem; color:var(--texto-suave); font-weight:300; line-height:1.5;}
+
+  /* cierre scrum */
+  #s-scrum-cierre{background:linear-gradient(160deg, var(--verde-prof), var(--verde-osc) 80%); text-align:center; flex-direction:column;}
+  #s-scrum-cierre h2{font-size:clamp(2rem,5vw,3.6rem); line-height:1.18; max-width:820px;}
+  #s-scrum-cierre h2 span{background:linear-gradient(95deg,var(--naranja),var(--naranja-claro)); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  #s-scrum-cierre p{margin-top:26px; max-width:600px; color:var(--texto-suave); font-weight:300; font-size:1.05rem; line-height:1.6;}
+
   /* ---------- CIERRE ---------- */
   #s10{
     background:radial-gradient(circle at 30% 30%, rgba(238,98,43,.15), transparent 50%), var(--verde-osc);
@@ -628,7 +713,7 @@
   <div class="wrap">
     <div class="head-mindset reveal">
       <div class="eyebrow" style="justify-content:center;">Dos formas de pensar el mismo objetivo</div>
-      <h2>Growth es el mindset que suma una capa de tecnología y datos al objetivo de negocio.</h2>
+      <h2>Growth es el mindset que suma una capa de tecnología y datos al objetivo de siempre.</h2>
       <p>El objetivo es compartido, lo que cambia es cómo se piensa el camino.</p>
     </div>
 
@@ -852,6 +937,309 @@
       </div>
     </div>
     <p class="cierre-fw reveal">El framework es lo que mantiene <b>vivo</b> el ciclo de observar, testear y escalar, sprint tras sprint.</p>
+  </div>
+</section>
+
+<!-- SCRUM 1 :: QUÉ ES SCRUM -->
+<section id="s-scrum-intro" class="scrum-section alt">
+  <div class="wrap">
+    <div class="scrum-intro-grid">
+      <div class="reveal">
+        <div class="scrum-big">Scrum<small>El framework detrás de los sprints</small></div>
+      </div>
+      <div class="reveal">
+        <div class="eyebrow">¿Qué es Scrum?</div>
+        <h2 style="font-size:clamp(1.9rem,3.5vw,2.6rem); line-height:1.2; margin-bottom:24px;">Un framework ágil para abordar problemas complejos y entregar valor de forma iterativa e incremental.</h2>
+        <div class="dato-list" style="display:flex; flex-direction:column; gap:14px;">
+          <div style="display:flex; gap:14px; align-items:flex-start; font-size:.96rem; color:var(--texto-suave); font-weight:300; line-height:1.5;"><span style="color:var(--naranja-claro); font-weight:800; font-size:.85rem; min-width:22px;">→</span> Liviano, simple de entender, pero difícil de dominar.</div>
+          <div style="display:flex; gap:14px; align-items:flex-start; font-size:.96rem; color:var(--texto-suave); font-weight:300; line-height:1.5;"><span style="color:var(--naranja-claro); font-weight:800; font-size:.85rem; min-width:22px;">→</span> No es un proceso ni una técnica: es un marco dentro del cual se aplican distintas prácticas.</div>
+          <div style="display:flex; gap:14px; align-items:flex-start; font-size:.96rem; color:var(--texto-suave); font-weight:300; line-height:1.5;"><span style="color:var(--naranja-claro); font-weight:800; font-size:.85rem; min-width:22px;">→</span> Requiere un Scrum Master que lo haga funcionar como está definido.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRUM 2 :: LOS 3 PILARES -->
+<section id="s-scrum-pilares" class="scrum-section">
+  <div class="wrap">
+    <div class="eyebrow reveal">Los 3 pilares</div>
+    <h2 class="reveal" style="font-size:clamp(2rem,4vw,3rem);">Todo en Scrum descansa sobre estos tres pilares</h2>
+    <div class="pilares-grid">
+      <div class="pilar-card reveal">
+        <div class="pc-ico">👁</div>
+        <h4>Transparencia</h4>
+        <p>Los aspectos significativos del proceso deben ser visibles para los responsables del resultado. La transparencia requiere un estándar común para que los observadores compartan un mismo entendimiento.</p>
+      </div>
+      <div class="pilar-card reveal">
+        <div class="pc-ico">🔍</div>
+        <h4>Inspección</h4>
+        <p>Los usuarios de Scrum deben inspeccionar frecuentemente los artefactos y el progreso hacia el objetivo del Sprint para detectar variaciones indeseadas.</p>
+      </div>
+      <div class="pilar-card reveal">
+        <div class="pc-ico">🔄</div>
+        <h4>Adaptación</h4>
+        <p>Si un inspector determina que uno o más aspectos de un proceso se desvían fuera de los límites aceptables, el proceso o el material que se está procesando debe ajustarse.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRUM 3 :: LOS VALORES -->
+<section id="s-scrum-valores" class="scrum-section alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">Los 5 valores de Scrum</div>
+    <h2 class="reveal" style="font-size:clamp(2rem,4vw,3rem);">El éxito con Scrum depende de vivir estos valores</h2>
+    <div class="valores-grid">
+      <div class="valor-card reveal">
+        <div class="vc-n">🎯</div>
+        <h4>Compromiso</h4>
+        <p>El equipo se compromete personalmente a alcanzar los objetivos del equipo Scrum.</p>
+      </div>
+      <div class="valor-card reveal">
+        <div class="vc-n">💪</div>
+        <h4>Coraje</h4>
+        <p>El equipo tiene el coraje de hacer las cosas bien y trabajar en problemas difíciles.</p>
+      </div>
+      <div class="valor-card reveal">
+        <div class="vc-n">🔎</div>
+        <h4>Foco</h4>
+        <p>Todos se enfocan en el trabajo del Sprint y en los objetivos del equipo.</p>
+      </div>
+      <div class="valor-card reveal">
+        <div class="vc-n">🤝</div>
+        <h4>Apertura</h4>
+        <p>El equipo y sus stakeholders acuerdan ser abiertos sobre el trabajo y los desafíos.</p>
+      </div>
+      <div class="valor-card reveal">
+        <div class="vc-n">🌱</div>
+        <h4>Respeto</h4>
+        <p>Los miembros del equipo se respetan entre sí como personas capaces e independientes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRUM 4 :: EL EQUIPO -->
+<section id="s-scrum-roles" class="scrum-section">
+  <div class="wrap">
+    <div class="eyebrow reveal">El equipo Scrum</div>
+    <h2 class="reveal" style="font-size:clamp(2rem,4vw,3rem);">Tres roles, un solo equipo</h2>
+    <div class="roles-grid">
+      <div class="rol-card r1 reveal">
+        <span class="rtag">Product Owner</span>
+        <h4>El qué</h4>
+        <ul>
+          <li>Responsable de maximizar el valor del producto.</li>
+          <li>Administra y prioriza el Product Backlog.</li>
+          <li>Asegura que el equipo entienda los ítems del backlog.</li>
+          <li>Es una sola persona, no un comité.</li>
+        </ul>
+      </div>
+      <div class="rol-card r2 reveal">
+        <span class="rtag">Scrum Master</span>
+        <h4>El cómo</h4>
+        <ul>
+          <li>Asegura que Scrum se entienda y se aplique correctamente.</li>
+          <li>Sirve al equipo eliminando impedimentos.</li>
+          <li>Facilita los eventos de Scrum cuando se le pide.</li>
+          <li>Es un líder servicial, no un jefe.</li>
+        </ul>
+      </div>
+      <div class="rol-card r3 reveal">
+        <span class="rtag">Equipo de Desarrollo</span>
+        <h4>El hacer</h4>
+        <ul>
+          <li>Auto-organizado y multifuncional.</li>
+          <li>Entrega un incremento potencialmente liberable en cada Sprint.</li>
+          <li>Sin títulos distintos al de Desarrollador, sin excepciones.</li>
+          <li>Tamaño ideal: 3 a 9 personas.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRUM 5 :: ARTEFACTOS -->
+<section id="s-scrum-artefactos" class="scrum-section alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">Los artefactos</div>
+    <h2 class="reveal" style="font-size:clamp(2rem,4vw,3rem);">Los artefactos representan trabajo o valor para dar transparencia e inspección</h2>
+    <div class="artefactos-grid">
+      <div class="arte-card reveal">
+        <h4>Product Backlog</h4>
+        <p>Lista ordenada de todo lo que podría necesitarse en el producto. Es la única fuente de requerimientos para cualquier cambio. El Product Owner es el responsable. Nunca está completo: evoluciona con el producto y el entorno.</p>
+      </div>
+      <div class="arte-card reveal">
+        <h4>Sprint Backlog</h4>
+        <p>Conjunto de ítems del Product Backlog seleccionados para el Sprint, más un plan para entregar el incremento del producto y cumplir el Sprint Goal. Es una predicción del equipo de desarrollo sobre qué funcionalidad estará en el próximo incremento.</p>
+      </div>
+      <div class="arte-card reveal">
+        <h4>Incremento</h4>
+        <p>La suma de todos los ítems del Product Backlog completados durante un Sprint más el valor de los incrementos de todos los Sprints anteriores. Al final de cada Sprint, el nuevo incremento debe estar terminado y en condición de ser utilizado.</p>
+      </div>
+      <div class="arte-card reveal">
+        <h4>Sprint Goal</h4>
+        <p>Un objetivo establecido para el Sprint que puede ser alcanzado mediante la implementación del Sprint Backlog. Provee orientación al equipo sobre por qué está construyendo el incremento. Se crea durante el Sprint Planning.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRUM 6 :: LOS EVENTOS (OVERVIEW) -->
+<section id="s-scrum-eventos" class="scrum-section">
+  <div class="wrap">
+    <div class="eyebrow reveal">Los eventos</div>
+    <h2 class="reveal" style="font-size:clamp(2rem,4vw,3rem);">Cinco eventos que crean regularidad y minimizan la necesidad de reuniones no definidas</h2>
+    <div class="eventos-flow">
+      <div class="evento-row reveal"><div class="ev-num">1</div><div class="ev-info"><h4>Sprint</h4><p>El contenedor de todos los demás eventos. Duración de 1 a 4 semanas, consistente durante todo el desarrollo.</p></div></div>
+      <div class="evento-row reveal"><div class="ev-num">2</div><div class="ev-info"><h4>Sprint Planning</h4><p>Planifica el trabajo a realizar durante el Sprint. Creado por el trabajo colaborativo del equipo Scrum completo.</p></div></div>
+      <div class="evento-row reveal"><div class="ev-num">3</div><div class="ev-info"><h4>Daily Scrum</h4><p>Evento de 15 minutos para sincronizar el trabajo del equipo de desarrollo y planificar las próximas 24 horas.</p></div></div>
+      <div class="evento-row reveal"><div class="ev-num">4</div><div class="ev-info"><h4>Sprint Review</h4><p>Se realiza al final del Sprint para inspeccionar el incremento y adaptar el Product Backlog si es necesario.</p></div></div>
+      <div class="evento-row reveal"><div class="ev-num">5</div><div class="ev-info"><h4>Sprint Retrospective</h4><p>Oportunidad para el equipo de inspeccionarse a sí mismo y crear un plan de mejoras para el próximo Sprint.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRUM 7 :: SPRINT -->
+<section id="s-scrum-sprint" class="scrum-section alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">El Sprint</div>
+    <div class="evento-detalle">
+      <div class="reveal">
+        <div class="ev-stat">1–4<small>semanas de duración fija, sin excepciones</small></div>
+      </div>
+      <div class="reveal">
+        <h2 style="font-size:clamp(1.9rem,3.5vw,2.6rem); line-height:1.2; margin-bottom:20px;">El corazón de Scrum: un bloque de tiempo donde se crea un incremento útil y potencialmente liberable.</h2>
+        <div class="ev-bullets">
+          <div class="ev-bullet"><span class="bn">→</span> Cada Sprint tiene un objetivo: el Sprint Goal.</div>
+          <div class="ev-bullet"><span class="bn">→</span> No se realizan cambios que pongan en peligro el Sprint Goal.</div>
+          <div class="ev-bullet"><span class="bn">→</span> Los Sprints consecutivos se suceden inmediatamente: no hay tiempo muerto entre uno y otro.</div>
+          <div class="ev-bullet"><span class="bn">→</span> Solo el Product Owner puede cancelar un Sprint (si el Sprint Goal queda obsoleto).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRUM 8 :: SPRINT PLANNING -->
+<section id="s-scrum-planning" class="scrum-section">
+  <div class="wrap">
+    <div class="eyebrow reveal">Sprint Planning</div>
+    <div class="evento-detalle">
+      <div class="reveal">
+        <div class="ev-stat">3 preguntas<small>que estructura el Sprint Planning</small></div>
+      </div>
+      <div class="reveal">
+        <h2 style="font-size:clamp(1.9rem,3.5vw,2.6rem); line-height:1.2; margin-bottom:20px;">¿Qué puede entregarse en este Sprint? ¿Cómo se logrará ese trabajo? ¿Por qué este Sprint tiene valor?</h2>
+        <div class="ev-bullets">
+          <div class="ev-bullet"><span class="bn">01</span> El equipo selecciona los ítems del Product Backlog para trabajar en el Sprint.</div>
+          <div class="ev-bullet"><span class="bn">02</span> El equipo define el Sprint Goal: el objetivo que el Sprint debe alcanzar.</div>
+          <div class="ev-bullet"><span class="bn">03</span> El equipo elabora un plan para convertir los ítems seleccionados en un incremento terminado.</div>
+          <div class="ev-bullet"><span class="bn">04</span> Duración máxima: 8 horas para un Sprint de un mes (proporcional para Sprints más cortos).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRUM 9 :: DAILY SCRUM -->
+<section id="s-scrum-daily" class="scrum-section alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">Daily Scrum</div>
+    <h2 class="reveal" style="font-size:clamp(2rem,4vw,3rem); margin-bottom:10px;">15 minutos, cada día, mismo lugar, misma hora</h2>
+    <p class="reveal" style="color:var(--texto-suave); font-weight:300; max-width:640px; margin-bottom:0; font-size:1rem; line-height:1.6;">Las tres preguntas que guían la sincronización diaria del equipo de desarrollo.</p>
+    <div class="daily-grid">
+      <div class="daily-card reveal">
+        <span class="dnum">01</span>
+        <h4>¿Qué hice ayer?</h4>
+        <p>Qué trabajo se completó el día anterior que contribuyó al Sprint Goal.</p>
+      </div>
+      <div class="daily-card reveal">
+        <span class="dnum">02</span>
+        <h4>¿Qué haré hoy?</h4>
+        <p>Qué trabajo se planea hacer en las próximas 24 horas para contribuir al Sprint Goal.</p>
+      </div>
+      <div class="daily-card reveal">
+        <span class="dnum">03</span>
+        <h4>¿Hay impedimentos?</h4>
+        <p>Si existe algún obstáculo que impide al equipo alcanzar el Sprint Goal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRUM 10 :: SPRINT REVIEW -->
+<section id="s-scrum-review" class="scrum-section">
+  <div class="wrap">
+    <div class="eyebrow reveal">Sprint Review</div>
+    <div class="evento-detalle">
+      <div class="reveal">
+        <div class="ev-stat">Al final<small>de cada Sprint, con stakeholders</small></div>
+      </div>
+      <div class="reveal">
+        <h2 style="font-size:clamp(1.9rem,3.5vw,2.6rem); line-height:1.2; margin-bottom:20px;">Se inspecciona el incremento y se adapta el Product Backlog en colaboración con los stakeholders.</h2>
+        <div class="ev-bullets">
+          <div class="ev-bullet"><span class="bn">→</span> El equipo demuestra el trabajo completado y responde preguntas sobre el incremento.</div>
+          <div class="ev-bullet"><span class="bn">→</span> El Product Owner explica qué ítems del Product Backlog se terminaron y cuáles no.</div>
+          <div class="ev-bullet"><span class="bn">→</span> Los stakeholders brindan feedback que puede modificar el Product Backlog.</div>
+          <div class="ev-bullet"><span class="bn">→</span> El resultado es un Product Backlog revisado con probabilidad de entrega para el próximo Sprint.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRUM 11 :: SPRINT RETROSPECTIVE -->
+<section id="s-scrum-retro" class="scrum-section alt">
+  <div class="wrap">
+    <div class="eyebrow reveal">Sprint Retrospective</div>
+    <div class="evento-detalle">
+      <div class="reveal">
+        <div class="ev-stat">Mejora<small>continua del equipo y del proceso</small></div>
+      </div>
+      <div class="reveal">
+        <h2 style="font-size:clamp(1.9rem,3.5vw,2.6rem); line-height:1.2; margin-bottom:20px;">El equipo se inspecciona a sí mismo y crea un plan de acción para mejorar durante el próximo Sprint.</h2>
+        <div class="ev-bullets">
+          <div class="ev-bullet"><span class="bn">01</span> Inspecciona cómo fue el último Sprint en cuanto a personas, relaciones, procesos y herramientas.</div>
+          <div class="ev-bullet"><span class="bn">02</span> Identifica los elementos que funcionaron bien y los que tienen potencial de mejora.</div>
+          <div class="ev-bullet"><span class="bn">03</span> Crea un plan para implementar mejoras concretas en el próximo Sprint.</div>
+          <div class="ev-bullet"><span class="bn">04</span> Duración máxima: 3 horas para un Sprint de un mes (proporcional para Sprints más cortos).</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRUM 12 :: DEFINITION OF DONE -->
+<section id="s-scrum-dod" class="scrum-section">
+  <div class="wrap">
+    <div class="eyebrow reveal">Definition of Done</div>
+    <h2 class="reveal" style="font-size:clamp(2rem,4vw,3rem); margin-bottom:14px;">Terminado significa terminado para todos</h2>
+    <p class="reveal" style="color:var(--texto-suave); font-weight:300; max-width:640px; margin-bottom:0; font-size:1rem; line-height:1.6;">La Definition of Done es el estándar compartido que determina cuándo un incremento está completo. Sin un DoD común, la transparencia es imposible.</p>
+    <div class="dod-grid">
+      <div class="dod-card reveal">
+        <h4>Criterios de calidad</h4>
+        <p>El incremento cumple con los estándares de calidad definidos por el equipo: sin bugs conocidos, con tests pasando.</p>
+      </div>
+      <div class="dod-card reveal">
+        <h4>Potencialmente liberable</h4>
+        <p>El incremento puede ser entregado a un usuario final en cualquier momento, sin trabajo adicional.</p>
+      </div>
+      <div class="dod-card reveal">
+        <h4>Revisado y aprobado</h4>
+        <p>El trabajo fue revisado por otro miembro del equipo y cumple con los criterios de aceptación del ítem del backlog.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRUM 13 :: CIERRE SCRUM -->
+<section id="s-scrum-cierre">
+  <div class="wrap">
+    <div class="eyebrow reveal" style="justify-content:center;">Para cerrar</div>
+    <h2 class="reveal">"Scrum no es una metodología. <span>Es un mindset.</span>"</h2>
+    <p class="reveal">El framework solo funciona cuando el equipo internaliza los valores y los pilares. Las ceremonias sin el mindset son solo reuniones. El mindset sin las ceremonias es solo intención. Los dos juntos son lo que hace posible aprender más rápido que cualquier competidor.</p>
   </div>
 </section>
 
